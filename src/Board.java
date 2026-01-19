@@ -5,6 +5,25 @@ public class Board {
     private int columns;
     private Cell[][] grid;
 
+    public Board(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
+        this.grid = new Cell[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                grid[i][j] = new Cell(null);
+            }
+        }
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
     public boolean dropPiece(int column, Piece piece) {
         for (int row = rows - 1; row >= 0; row--) {
             if (grid[row][column].isEmpty()) {
