@@ -5,17 +5,18 @@ public class Board {
     private int columns;
     private Cell[][] grid;
 
-    public dropPiece(int column, Piece piece) {
+    public boolean dropPiece(int column, Piece piece) {
         for (int row = rows - 1; row >= 0; row--) {
             if (grid[row][column].isEmpty()) {
                 grid[row][column].setPiece(piece);
                 return true;
             }
         }
+        return false; // Column is full
+    }
 
-
-    public IsColumnFull(int column) {
-        return grid[0][column].isOccupied();
+    public boolean IsColumnFull(int column) {
+        return !grid[0][column].isEmpty();
     }
 
     public Cell getCell(int row, int column) {
